@@ -5,12 +5,12 @@ int main(int argc, char *argv[])
 {
    double data, res;
    int i, num_procs, my_rank, root=0, tag=3;
-   //1.init
+   //add MPI_Init(&argc, &argv)
    MPI_Init(&argc, &argv);
    MPI_Status status;
-   //size
+   //add MPI_Comm_size
+   //change communicator from MPI_COMM_SELF into MPI_COMM_WORLD
    MPI_Comm_size(MPI_COMM_WORLD, &num_procs);
-   //comm world
    MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
 
    if (my_rank == root) {
