@@ -15,8 +15,9 @@ int main(int argc, char *argv[])
 
    if (my_rank == root) {
       data = 1.73205;
-      MPI_Bcast(&data, 1, MPI_DOUBLE, root, MPI_COMM_WORLD);
    }
+      MPI_Bcast(&data, 1, MPI_DOUBLE, root, MPI_COMM_WORLD);
+  
 
    res = data * (double)my_rank;
    if (my_rank == root) {
@@ -27,7 +28,7 @@ int main(int argc, char *argv[])
       printf("result is %.2f\n", res);
    }
    else {
-      MPI_Send(&res, 1, MPI_INT, root, tag, MPI_COMM_WORLD);
+      MPI_Send(&res, 1, MPI_DOUBLE, root, tag, MPI_COMM_WORLD);
    }
 
    MPI_Finalize();
